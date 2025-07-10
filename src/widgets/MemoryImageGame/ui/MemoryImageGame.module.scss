@@ -1,0 +1,61 @@
+.card,
+.cardActive {
+  position: relative;
+  color: white;
+}
+
+.card,
+.cardActive,
+.card__front,
+.card__back {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  transition: transform 0.5s cubic-bezier(0.2, 0.85, 0.4, 1.275);
+  border-radius: 5%;
+  margin: 5px;
+}
+
+.card__front {
+  z-index: 1;
+  position: relative;
+  background-color: cyan;
+  backface-visibility: hidden;
+}
+.card__back {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  backface-visibility: hidden;
+  background-color: orange;
+  transform: rotateY(-180deg);
+}
+
+.cardActive .card__back {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.cardActive .card__front {
+  transform: rotateY(180deg);
+  z-index: -1;
+}
+
+.cardBackImage {
+  margin-top: 20px;
+}
+
+@keyframes fallDown {
+  0% {
+    transform: translateY(-100);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(150vh); // сместить вниз на 150% высоты окна
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-100);
+    opacity: 1;
+  }
+}
